@@ -1,0 +1,78 @@
+# Variables de entorno y secretos
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+secrets/
+
+# Node.js / Next.js
+node_modules/
+.next/
+out/
+dist/
+build/
+coverage/
+.npm/
+.pnpm-store/
+.yarn/
+*.tsbuildinfo
+next-env.d.ts
+
+# .NET / ASP.NET Core
+bin/
+obj/
+artifacts/
+TestResults/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+
+# IDE y editores
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.code-workspace
+
+# Logs y archivos temporales
+logs/
+*.log
+*.tmp
+*.temp
+.cache/
+tmp/
+temp/
+
+# Base de datos y datos locales
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+postgres-data/
+pgdata/
+redis-data/
+
+# Docker local
+docker-compose.override.yml
+
+# Sistemas operativos
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos de respaldo
+*.bak
+*.backup
+*.old
+*.orig
+
+# Herramientas
+.sonar/
+.sonarqube/
+.nyc_output/
