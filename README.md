@@ -4,9 +4,9 @@
 
 ## Estado del proyecto
 
-**Fase 0 — Definición, documentación y preparación del repositorio.**
+**Fase 0 — Base documental completada; preparación para iniciar la arquitectura técnica.**
 
-El proyecto todavía no contiene código de aplicación. La prioridad actual es definir el producto, su alcance inicial, sus reglas y la arquitectura que guiará el desarrollo.
+El repositorio todavía no contiene código de aplicación. Ya se documentaron alcance, requisitos, reglas, historias de usuario, dominio, estados, seguridad, navegación, backlog y criterios de aceptación. Las hipótesis marcadas como provisionales deberán validarse durante el proyecto.
 
 ## Visión
 
@@ -22,26 +22,29 @@ La primera versión se concentrará en servicios a domicilio de:
 - Plomería.
 - Aire acondicionado y refrigeración.
 
-La plataforma estará preparada para incorporar posteriormente limpieza, jardinería, carpintería, construcción, reparación de equipos, servicios empresariales, proveedores y otras categorías.
+Después podrá incorporar limpieza, jardinería, carpintería, construcción, reparación de equipos, servicios empresariales, proveedores y repuestos.
 
-## Tipos de usuario
+## Producto unificado
+
+Existirá una sola aplicación web/PWA con experiencias diferenciadas:
 
 - **Cliente:** publica solicitudes, recibe cotizaciones, contrata y califica.
-- **Trabajador o proveedor:** crea un perfil profesional, completa su verificación, recibe oportunidades y envía cotizaciones.
-- **Administrador:** verifica perfiles, administra categorías y atiende reportes o incidencias.
+- **Proveedor:** crea su perfil, completa verificación, recibe oportunidades y cotiza.
+- **Administrador:** verifica perfiles, administra catálogos y atiende incidencias.
 
-Una misma cuenta podrá estar preparada para actuar como cliente y proveedor mediante roles diferenciados.
+Una misma cuenta podrá tener perfiles de cliente y proveedor y cambiar de modo sin duplicar su identidad.
 
 ## Flujo principal
 
 1. El cliente describe el servicio que necesita.
-2. La plataforma identifica categoría y ubicación.
-3. Los proveedores compatibles reciben la oportunidad.
-4. Los proveedores interesados envían una cotización.
-5. El cliente compara propuestas y selecciona una.
-6. El servicio se realiza y posteriormente puede calificarse.
+2. La plataforma identifica categoría y zona.
+3. Proveedores compatibles reciben la oportunidad.
+4. Los interesados envían cotizaciones.
+5. El cliente compara y selecciona una propuesta.
+6. Se crea una contratación.
+7. El servicio se realiza, finaliza y puede calificarse.
 
-## Stack tecnológico previsto
+## Stack previsto
 
 | Área | Tecnología |
 |---|---|
@@ -49,29 +52,26 @@ Una misma cuenta podrá estar preparada para actuar como cliente y proveedor med
 | Estilos | Tailwind CSS |
 | Backend/API | ASP.NET Core con C# |
 | Base de datos | PostgreSQL |
-| Geolocalización futura | PostGIS |
+| Ubicación futura | PostGIS |
 | Tiempo real futuro | SignalR |
 | Caché futura | Redis |
 | Contenedores | Docker y Docker Compose |
 | Aplicación móvil futura | React Native con Expo |
 
-## Arquitectura inicial
+## Arquitectura
 
-Se utilizará un **monolito modular** alojado en un monorepositorio. Existirá una sola aplicación web/PWA con experiencias diferenciadas por rol, una API principal y una base de datos PostgreSQL.
+Se utilizará un **monolito modular** en un monorepositorio:
 
 ```text
 Necesito/
 ├── apps/
 │   ├── web/                 # Next.js: cliente, proveedor y administración
 │   └── api/                 # ASP.NET Core
-├── docs/                    # Producto, alcance, arquitectura y decisiones
-├── infrastructure/          # Docker, base de datos y despliegue
-├── scripts/                 # Automatizaciones de desarrollo y mantenimiento
+├── docs/                    # Producto, arquitectura y planificación
+├── infrastructure/          # Docker, PostgreSQL y despliegue
+├── scripts/                 # Automatizaciones
 ├── tests/                   # Pruebas generales e integración
 ├── .github/                 # Plantillas y automatizaciones de GitHub
-├── .editorconfig
-├── .gitattributes
-├── .gitignore
 ├── CONTRIBUTING.md
 ├── SECURITY.md
 └── README.md
@@ -79,28 +79,26 @@ Necesito/
 
 ## Documentación
 
-El índice completo está disponible en [`docs/README.md`](docs/README.md).
+El índice completo está en [`docs/README.md`](docs/README.md).
 
-Documentos principales:
+Documentos recomendados para comprender el proyecto:
 
-- [Visión del proyecto](docs/01-vision-del-proyecto.md)
-- [Alcance inicial](docs/02-alcance-inicial.md)
-- [Usuarios y roles](docs/03-usuarios-y-roles.md)
-- [Flujo del servicio](docs/04-flujo-del-servicio.md)
-- [Stack tecnológico](docs/05-stack-tecnologico.md)
-- [Arquitectura inicial](docs/06-arquitectura-inicial.md)
-- [Roadmap](docs/07-roadmap.md)
-- [Glosario](docs/08-glosario.md)
-- [Plan de la etapa 0](docs/09-plan-etapa-0.md)
-- [Registro de decisiones técnicas](docs/adr/README.md)
+1. [Visión](docs/01-vision-del-proyecto.md) y [alcance](docs/02-alcance-inicial.md).
+2. [Requisitos](docs/10-requisitos-del-mvp.md) y [reglas de negocio](docs/11-reglas-de-negocio.md).
+3. [Historias de usuario](docs/12-historias-de-usuario-mvp.md).
+4. [Modelo de dominio](docs/13-modelo-de-dominio-inicial.md) y [estados](docs/14-estados-y-transiciones.md).
+5. [Seguridad y privacidad](docs/16-seguridad-y-privacidad.md).
+6. [Backlog](docs/20-backlog-inicial.md) y [plan de inicio técnico](docs/22-plan-de-inicio-tecnico.md).
+7. [Registro de decisiones](docs/adr/README.md).
 
-## Convenciones iniciales
+## Convenciones
 
 - Rama estable: `main`.
-- Nuevos cambios: ramas cortas y descriptivas.
-- Commits: formato Conventional Commits.
-- Secretos y credenciales: nunca se almacenan en Git.
-- Cada decisión estructural importante debe registrarse mediante un ADR.
+- Cambios en ramas cortas y descriptivas.
+- Commits con Conventional Commits.
+- Secretos y credenciales nunca se almacenan en Git.
+- Decisiones estructurales importantes se registran mediante ADR.
+- Las reglas del dominio deben validarse también en la API.
 
 Consulta [`CONTRIBUTING.md`](CONTRIBUTING.md) antes de realizar cambios.
 
@@ -110,7 +108,7 @@ Las vulnerabilidades no deben publicarse como incidencias abiertas. Consulta [`S
 
 ## Licencia
 
-Actualmente el proyecto no tiene una licencia de código abierto. El contenido se mantiene bajo control de su propietario hasta que se defina una licencia formal.
+Actualmente el proyecto no tiene licencia de código abierto. El contenido permanece bajo control de su propietario hasta definir una licencia formal.
 
 ## Responsable inicial
 
