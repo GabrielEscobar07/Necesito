@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Describir los conceptos centrales antes de diseñar tablas o clases. Este documento no es todavía un esquema definitivo de PostgreSQL.
+Describir los conceptos centrales antes de diseñar tablas o clases. Este documento no es todavía un esquema definitivo de MySQL.
 
 ## Módulos del monolito
 
@@ -119,6 +119,7 @@ Proveedor 1 ── N SolicitudVerificación
 - Separar datos públicos, privados y administrativos.
 - Evitar que la interfaz sea la única responsable de validar reglas.
 - Añadir campos de creación, actualización y, cuando aplique, actor responsable.
+- Usar claves foráneas, índices, restricciones únicas y transacciones para proteger integridad.
 
 ## Pendientes para el diseño de base de datos
 
@@ -128,3 +129,4 @@ Proveedor 1 ── N SolicitudVerificación
 - Almacenamiento de archivos.
 - Campos obligatorios de verificación.
 - Política de retención y eliminación de datos.
+- Proveedor de Entity Framework Core compatible con las versiones fijadas.

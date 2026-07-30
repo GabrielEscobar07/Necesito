@@ -7,10 +7,11 @@ Este backlog organiza el trabajo por resultados. Los elementos se convertirán p
 ## Épica 0 — Preparación técnica
 
 - [ ] Verificar Git, Node.js, gestor de paquetes, .NET SDK y Docker Desktop.
-- [ ] Clonar el repositorio localmente.
+- [x] Clonar el repositorio localmente.
 - [ ] Inicializar Next.js con TypeScript y Tailwind en `apps/web`.
 - [ ] Inicializar ASP.NET Core en `apps/api`.
-- [ ] Crear PostgreSQL con Docker Compose.
+- [ ] Crear MySQL con Docker Compose usando una base exclusiva para Necesito.
+- [ ] Configurar Entity Framework Core y migraciones para MySQL.
 - [ ] Definir variables de entorno de ejemplo.
 - [ ] Confirmar comunicación web → API → base de datos.
 - [ ] Crear validaciones iniciales de CI.
@@ -97,7 +98,7 @@ Este backlog organiza el trabajo por resultados. Los elementos se convertirán p
 
 ## Posterior al MVP — P2
 
-- [ ] PostGIS y búsqueda geográfica avanzada.
+- [ ] Búsqueda geográfica avanzada con capacidades espaciales de MySQL o servicio especializado.
 - [ ] SignalR y comunicación en tiempo real.
 - [ ] Redis cuando exista una necesidad medida.
 - [ ] Notificaciones push.
