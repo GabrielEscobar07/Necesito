@@ -9,9 +9,9 @@ Web/PWA Next.js
        │ HTTPS/JSON
        ▼
 API ASP.NET Core
-       │
+       │ Entity Framework Core
        ▼
-PostgreSQL
+MySQL
 ```
 
 ## Razones
@@ -26,30 +26,30 @@ PostgreSQL
 
 ```text
 Identity
-Users
-Providers
-ServiceCatalog
+Profiles
+Catalog
+Verification
 ServiceRequests
 Quotes
-Jobs
+Engagements
 Reviews
-Moderation
+TrustAndSafety
 Notifications
 ```
 
-Estos nombres son candidatos, no proyectos creados todavía. Se confirmarán al modelar el dominio.
+Estos nombres son candidatos, no proyectos creados todavía. Se confirmarán al modelar la solución de ASP.NET Core.
 
 ## Responsabilidades preliminares
 
 - **Identity:** autenticación, sesiones y autorización.
-- **Users:** perfiles y datos generales.
-- **Providers:** perfil profesional, categorías, zonas y verificación.
-- **ServiceCatalog:** categorías y tipos de servicio.
+- **Profiles:** perfiles de cliente y proveedor.
+- **Catalog:** categorías, especialidades, ciudades y zonas.
+- **Verification:** documentos y revisión de proveedores.
 - **ServiceRequests:** solicitudes publicadas por clientes.
 - **Quotes:** propuestas enviadas por proveedores.
-- **Jobs:** contratación, ejecución y cierre.
+- **Engagements:** contratación, ejecución y cierre.
 - **Reviews:** reputación y calificaciones.
-- **Moderation:** reportes, suspensiones y auditoría.
+- **TrustAndSafety:** reportes, suspensiones y auditoría.
 - **Notifications:** avisos internos y futuros canales externos.
 
 ## Límites
@@ -66,16 +66,30 @@ La aplicación web tendrá una base común y áreas protegidas por rol:
 
 ```text
 /                    Sitio público
-/solicitudes         Experiencia de cliente
-/proveedor            Experiencia profesional
-/admin                Administración
+/cliente             Experiencia de cliente
+/proveedor           Experiencia profesional
+/admin               Administración
 ```
 
-Las rutas definitivas se decidirán al diseñar navegación y autenticación.
+La interfaz se diseñará mobile-first con componentes reutilizables, estados de carga y error, formularios accesibles y separación entre datos públicos y privados.
 
 ## Datos
 
-PostgreSQL será la fuente principal de verdad. Las operaciones críticas, como aceptar una cotización, deberán ejecutarse transaccionalmente.
+MySQL será la fuente principal de verdad. Las operaciones críticas, como aceptar una cotización, deberán ejecutarse transaccionalmente.
+
+Cada entorno tendrá una base independiente:
+
+```text
+necesito_dev       Desarrollo local
+necesito_test      Pruebas automatizadas
+necesito_prod      Producción futura
+```
+
+Los nombres son provisionales. Nunca se compartirán tablas o credenciales con otros sistemas.
+
+## Ubicación
+
+La primera etapa utilizará ciudad, zona y coordenadas opcionales. La dirección exacta permanecerá protegida según el estado de la contratación. No se incorporará una tecnología geográfica adicional hasta validar una necesidad concreta.
 
 ## Integraciones futuras
 

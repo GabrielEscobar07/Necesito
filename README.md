@@ -51,8 +51,9 @@ Una misma cuenta podrá tener perfiles de cliente y proveedor y cambiar de modo 
 | Web/PWA | Next.js, React y TypeScript |
 | Estilos | Tailwind CSS |
 | Backend/API | ASP.NET Core con C# |
-| Base de datos | PostgreSQL |
-| Ubicación futura | PostGIS |
+| Base de datos | MySQL |
+| Persistencia .NET | Entity Framework Core con proveedor compatible para MySQL |
+| Ubicación inicial | Ciudad, zona y coordenadas opcionales |
 | Tiempo real futuro | SignalR |
 | Caché futura | Redis |
 | Contenedores | Docker y Docker Compose |
@@ -68,7 +69,7 @@ Necesito/
 │   ├── web/                 # Next.js: cliente, proveedor y administración
 │   └── api/                 # ASP.NET Core
 ├── docs/                    # Producto, arquitectura y planificación
-├── infrastructure/          # Docker, PostgreSQL y despliegue
+├── infrastructure/          # Docker, MySQL y despliegue
 ├── scripts/                 # Automatizaciones
 ├── tests/                   # Pruebas generales e integración
 ├── .github/                 # Plantillas y automatizaciones de GitHub
@@ -99,6 +100,7 @@ Documentos recomendados para comprender el proyecto:
 - Secretos y credenciales nunca se almacenan en Git.
 - Decisiones estructurales importantes se registran mediante ADR.
 - Las reglas del dominio deben validarse también en la API.
+- Cada proyecto y cada entorno tendrá una base de datos y credenciales independientes.
 
 Consulta [`CONTRIBUTING.md`](CONTRIBUTING.md) antes de realizar cambios.
 
